@@ -1,5 +1,23 @@
 const blogId = JSON.parse(localStorage.getItem("blogId"));
 
+function deleteComment(commentId) {
+  fetch(`http://localhost:3000/delete-comment/${commentId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      window.location.href = "blog-detail.html";
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 fetch(`http://localhost:3000/blog-detail/${blogId}`)
   .then((response) => {
     return response.json();
@@ -11,11 +29,37 @@ fetch(`http://localhost:3000/blog-detail/${blogId}`)
     const blogContent = document.getElementById("blog-content");
     const blogAuthor = document.getElementById("blog-author");
     const blogDate = document.getElementById("blog-date");
+    const blogLike = document.getElementById("like-amount");
 
     blogTitle.innerText = data.titleBlog;
     blogContent.innerText = data.content;
     blogAuthor.innerText = "Author: " + data.author;
     blogDate.innerText = "Date: " + data.date;
+    blogLike.innerText = data.like.toString();
+
+    // Like
+
+    document.getElementById("btn-like").addEventListener("click", () => {
+      fetch(`http://localhost:3000/like/${blogId}`)
+        .then((response) => response.json())
+        .then((rs) => {
+          blogLike.innerText = data.like.toString();
+          window.location.href = "blog-detail.html";
+        })
+        .catch((err) => {});
+    });
+
+    // Lấy data Tác giả
+
+    blogAuthor.addEventListener("click", () => {
+      fetch(`http://localhost:3000/author/${data.author}`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem("authorData", JSON.stringify(data));
+          window.location.href = "author.html";
+        })
+        .catch((err) => {});
+    });
 
     // Đổ dữ liệu comment lên trang
     const commentList = document.getElementById("comment-list");
@@ -40,8 +84,7 @@ fetch(`http://localhost:3000/blog-detail/${blogId}`)
       commentItem.appendChild(authorSpan);
       commentItem.appendChild(dateSpan);
       commentItem.appendChild(commentP);
-
-      if (comment.author === data.authorBlog) {
+      if (comment.author === comment.authorBlog) {
         const deleteLink = document.createElement("a");
         deleteLink.href = "/delete-comment/" + comment._id;
 
@@ -52,6 +95,11 @@ fetch(`http://localhost:3000/blog-detail/${blogId}`)
 
         deleteLink.appendChild(deleteButton);
         commentItem.appendChild(deleteLink);
+        commentItem
+          .querySelector(".btn-delete")
+          .addEventListener("click", function () {
+            deleteComment(comment._id);
+          });
       }
 
       const updateLink = document.createElement("a");

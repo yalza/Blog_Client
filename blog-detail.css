@@ -144,3 +144,24 @@ h3 {
 .hidden {
   overflow: hidden;
 }
+
+#blog-author {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#blog-author:hover {
+  color: #45a049;
+}
+
+.btn-like {
+  border: none;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.btn-like:hover {
+  color: blue;
+}

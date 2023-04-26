@@ -4,6 +4,7 @@ fetch("http://localhost:3000/myblog")
   })
   .then((data) => {
     document.getElementById("username").innerText = data.username;
+    localStorage.setItem("username", JSON.stringify(data.username));
     const cardList = document.getElementById("card-list");
     data.blogs.forEach((blog) => {
       const card = document.createElement("div");

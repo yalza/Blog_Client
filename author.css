@@ -1,0 +1,42 @@
+.author {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 6rem;
+  min-height: 32rem;
+}
+h1 {
+  margin-bottom: 2rem;
+}
+
+.author__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author__username,
+.author__fullname,
+.author__dob,
+.author__hometown {
+  margin-bottom: 1rem;
+}
+
+.author__username h2,
+.author__fullname h2,
+.author__dob h2,
+.author__hometown h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.author__username p,
+.author__fullname p,
+.author__dob p,
+.author__hometown p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+}

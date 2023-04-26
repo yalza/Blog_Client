@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cập nhật Blog</title>
-    <link rel="stylesheet" href="create-blog.css" />
+    <title>Thông tin tác giả</title>
+    <link rel="stylesheet" type="text/css" href="author.css" />
     <link rel="stylesheet" href="header.css" />
     <link rel="stylesheet" href="footer.css" />
   </head>
@@ -52,37 +49,29 @@
     </nav>
   </header>
   <body>
-    <div class="container">
-      <form class="form" method="POST">
-        <h2 class="form__title">Chỉnh sửa bài viết</h2>
-        <div class="form__group">
-          <label class="form__label" for="title">Tiêu đề</label>
-          <input
-            class="form__input"
-            type="text"
-            id="title"
-            value="{{titleBlog}}"
-            name="title"
-            placeholder="Enter title here....."
-            required
-          />
+    <div class="author">
+      <h1>Thông tin tác giả</h1>
+      <div class="author__info">
+        <div class="author__username">
+          <h2>Username:</h2>
+          <p id="author-name">username_here</p>
         </div>
-        <div class="form__group">
-          <label class="form__label" for="content">Nội dung</label>
-          <textarea
-            class="form__textarea"
-            id="content"
-            name="content"
-            value="{{contentBlog}}"
-            placeholder="Enter content here....."
-            required
-          ></textarea>
+        <div class="author__fullname">
+          <h2>Full name:</h2>
+          <p id="author-fullname">full_name_here</p>
         </div>
-        <button id="updateBtn" class="form__button"">Cập nhật</button>
-      </form>
+        <div class="author__dob">
+          <h2>Ngày sinh:</h2>
+          <p id="dob">dob_here</p>
+        </div>
+        <div class="author__hometown">
+          <h2>Quê quán:</h2>
+          <p id="author-hometown">hometown_here</p>
+        </div>
+      </div>
     </div>
   </body>
-  <script src="update-blog.js"></script>
+  <script src="author.js"></script>
   <footer>
     <div class="footer-container">
       <div class="footer-logo">
